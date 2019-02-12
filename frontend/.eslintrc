@@ -1,0 +1,26 @@
+{  
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "linebreak-style": ["off"],
+    "comma-dangle": ["off"],
+    "react/sort-comp": ["off"],
+    "react/forbid-prop-types": ["off"],
+    "max-len": ["error", 200],
+    "no-console": "off"
+  },
+  "settings": {
+    "import/resolver": "webpack",
+    "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true
+  }
+}

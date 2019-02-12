@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: sockittoeme-frontend
+    name: sockittoeme-frontend
+  name: sockittoeme-frontend
+  namespace: sockittoeme-$ENVIRONMENT
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: sockittoeme-frontend
+    spec:
+      containers:
+        -
+          image: "$ACR_DNS/sockittoeme-frontend:$BUILD_ID"
+          name: sockittoeme-frontend
+          ports:
+            -
+              containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sockittoeme-frontend
+  namespace: sockittoeme-$ENVIRONMENT
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: sockittoeme-frontend

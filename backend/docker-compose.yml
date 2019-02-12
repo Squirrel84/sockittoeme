@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  sockittoeme.api:
+    image: ${DOCKER_REGISTRY:-}sockittoeme.api
+    ports:
+      - 8083:80
+    build:
+      context: .
+      dockerfile: SockItToeMe.Api/Dockerfile
+    volumes:
+      - mnt:/mnt
+  sockittoeme.db:
+    image: ${DOCKER_REGISTRY:-}sockittoeme.db
+    build:
+      context: Database
+      dockerfile: ./Dockerfile
+    ports:
+      - 14335:1433
+    volumes:
+      - mnt:/data
+    environment:
+      SA_PASSWORD: "Fakepassword_blah!"
+  sockittoeme.db.setup:
+    image: ${DOCKER_REGISTRY:-}sockittoeme.db.setup
+    build:
+      context: .
+      dockerfile: SockItToeMe.Database/Dockerfile
+    depends_on:
+      - sockittoeme.db
+volumes:
+  mnt:
