@@ -12,7 +12,7 @@ namespace SockItToeMe.Entities
 
         public string Colour { get; set; }
 
-        public int Size { get; set; }
+        public string Size { get; set; }
 
         public string Thickness { get; set; }
 

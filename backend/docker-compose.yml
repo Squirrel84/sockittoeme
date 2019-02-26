@@ -8,8 +8,6 @@ services:
     build:
       context: .
       dockerfile: SockItToeMe.Api/Dockerfile
-    volumes:
-      - mnt:/mnt
   sockittoeme.db:
     image: ${DOCKER_REGISTRY:-}sockittoeme.db
     build:
@@ -18,7 +16,7 @@ services:
     ports:
       - 14335:1433
     volumes:
-      - mnt:/data
+      - ./data:/var/opt/mssql/data
     environment:
       SA_PASSWORD: "Fakepassword_blah!"
   sockittoeme.db.setup:
@@ -28,5 +26,3 @@ services:
       dockerfile: SockItToeMe.Database/Dockerfile
     depends_on:
       - sockittoeme.db
-volumes:
-  mnt:
