@@ -1,6 +1,6 @@
 ﻿namespace SockItToeMe.Models
 {
-    public class SockProfileModel
+    public class SockProfileModel : IModel
     {
         public string Description { get; set; }
         public string Colour { get; set; }
