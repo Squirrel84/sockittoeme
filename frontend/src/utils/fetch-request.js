@@ -1,5 +1,12 @@
 const createRequest = (endpoint,
-  { body, method = 'GET', headers = { 'Content-Type': 'application/json' }, mode = 'no-cors', encType = null }) =>
+  { body,
+    method = 'GET',
+    headers = {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+    }, mode = 'cors', encType = null }) =>
   fetch(endpoint, {
     body,
     method,
@@ -12,6 +19,8 @@ const createRequest = (endpoint,
     }
   });
 
-const fetchRequest = (url, requestOptions = {}) => createRequest(url, requestOptions).then(response => response);
+const fetchRequest = (url, requestOptions = {}) =>
+  createRequest(url, requestOptions)
+    .then(response => response);
 
 export default fetchRequest;

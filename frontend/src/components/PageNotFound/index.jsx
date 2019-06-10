@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PageNotFound = () =>
+const PageNotFound = () => (
   <div>
     <h1>Error 404 - Page Not Found</h1>
     <p>
@@ -11,5 +11,6 @@ const PageNotFound = () =>
       <strong>Requested URL:</strong> { location.href }
     </p>
     <p><a href="/" title="home">Click here to go Home</a></p>
-  </div>;
+  </div>);
+
 export default PageNotFound;

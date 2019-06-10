@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Sock](
+﻿IF NOT EXISTS(SELECT 1 FROM [dbo].[Sock])
+CREATE TABLE [dbo].[Sock](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Description] [varchar](500) NULL,
 	[Colour] [nvarchar](25) NULL,

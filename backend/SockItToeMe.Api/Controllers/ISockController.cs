@@ -5,6 +5,6 @@ namespace SockItToeMe.API.Controllers
 {
     public interface ISockController
     {
-        Task<ActionResult> Get(int id);
+        Task<IActionResult> Get(int id);
     }
 }

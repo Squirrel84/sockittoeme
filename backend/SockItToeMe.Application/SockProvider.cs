@@ -22,7 +22,7 @@ namespace SockItToeMe.Application
 
         public async Task<SockProfileModel> GetByIdAsync(int id)
         {
-            var entity = new SockEntity() { Colour = "Black", Description = "Big Black One", Material = "Cotton", Size = "Big", SockId = id, Thickness = "Thermal" }; //await _sockRepository.GetSockByIdAsync(id);
+            var entity = await _sockRepository.GetSockByIdAsync(id);
 
             if (entity != null)
             {

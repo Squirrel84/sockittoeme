@@ -1,43 +1,46 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import getSockById from '../../../actions/sockActions';
 
-let sockIdFromUrl = 0;
 class Sock extends React.Component {
   constructor(props) {
-    console.log('constructor');
     super(props);
-    sockIdFromUrl = this.props.match.params.id;
-    console.log(`sock id from url ${sockIdFromUrl}`);
+    this.state = { currentSock: null };
+    this.getSock = this.getSock.bind(this);
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
-    if (this.props.currentSock === null || this.props.currentSock.sockId !== sockIdFromUrl) {
-      console.log(`getting sock by id ${sockIdFromUrl}`);
-      this.props.getSock(sockIdFromUrl);
+    if (this.state.currentSock === null) {
+      this.getSock(this.props.match.params.id);
     }
   }
 
+  getSock(id) {
+    getSockById(id).then(sock => {
+      console.log(sock);
+      this.setState({ currentSock: sock, error: sock === null });
+    });
+  }
+
   render() {
-    if (this.props.error) {
-      return (<div>An Error Has Occurred</div>);
+    if (this.state.error) {
+      return (<h1>Oops... We have lost your sock!!!</h1>);
     }
-    console.log('render');
-    if (this.props.currentSock) {
-      console.log(`render sock by id ${sockIdFromUrl}`);
+    if (this.state.currentSock) {
+      console.log(this.state.currentSock);
       return (
         <div className="container">
           <div className="span3 well" style={{ textAlign: 'center' }}>
-            <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
-              <img
-                alt="profile"
-                src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"
-                name="aboutme" width="140" height="140"
-                className="img-circle"
-              />
-            </a>
-            <h3>Joe Sixpack</h3>
-            <em>click my face for more</em>
+            <img
+              alt="sock"
+              src="/public/images/Sock404.png"
+              name="aboutsock" width="480" height="480"
+              className="img-circle"
+            />
+            <h3>{this.state.currentSock.description}</h3>
+            <h4>Colour: {this.state.currentSock.colour}</h4>
+            <h4>Material: {this.state.currentSock.material}</h4>
+            <h4>Thickness: {this.state.currentSock.thickness}</h4>
           </div>
         </div>
       );
@@ -47,15 +50,14 @@ class Sock extends React.Component {
 }
 
 Sock.propTypes = {
-  match: PropTypes.object.isRequired,
-  currentSock: PropTypes.object,
-  getSock: PropTypes.func.isRequired,
-  error: PropTypes.bool
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.node,
+    }).isRequired,
+  }).isRequired
 };
 
 Sock.defaultProps = {
-  currentSock: null,
-  error: false
 };
 
 export default Sock;

@@ -21,8 +21,14 @@ namespace SockItToeMe.API.Controllers
             
         }
 
+        [HttpGet(""), MapToApiVersion("1")]
+        public IActionResult Default()
+        {
+            return Ok();
+        }
+
         [HttpGet("get/{id}"), MapToApiVersion("1")]
-        public async Task<ActionResult> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var model = await this.Provider.GetByIdAsync(id);
 
@@ -31,8 +37,7 @@ namespace SockItToeMe.API.Controllers
                 return NotFound($"Sock [{id}] was not found");
             }
 
-            Response.Headers.Add("X-Content-Type-Options", "nosniff");
-            return Ok(model);           
+            return Ok(model);
         }
     }
 
@@ -47,7 +52,7 @@ namespace SockItToeMe.API.Controllers
         }
 
         [HttpGet("get/{id}"), MapToApiVersion("2")]
-        public async Task<ActionResult> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var model = await this.Provider.GetByIdAsync(id);
 
@@ -56,12 +61,11 @@ namespace SockItToeMe.API.Controllers
                 return NotFound($"Sock [{id}] was not found");
             }
 
-            Response.Headers.Add("X-Content-Type-Options", "nosniff");
             return Ok(model);
         }
 
         [HttpGet("get/{id}"), MapToApiVersion("3")]
-        public async Task<ActionResult> GetV3(int id)
+        public async Task<IActionResult> GetV3(int id)
         {
             var model = await this.Provider.GetByIdAsync(id);
 
@@ -70,7 +74,6 @@ namespace SockItToeMe.API.Controllers
                 return NotFound($"Sock [{id}] was not found");
             }
 
-            Response.Headers.Add("X-Content-Type-Options", "nosniff");
             return Ok(model);
         }
     }
