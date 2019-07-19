@@ -1,4 +1,4 @@
-﻿namespace SockItToeMe.Models
+﻿namespace SockItToeMe.Models.Interfaces
 {
     public interface IModel
     {

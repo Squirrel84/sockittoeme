@@ -51,8 +51,14 @@ namespace SockItToeMe.API
             ConnectionFactory connectionFactory = new SqlConnectionFactory(connectionString);
 
             services.AddScoped<ISockRepository>(use => new SockRepository(connectionFactory));
+            services.AddScoped<ISizeRepository>(use => new SizeRepository(connectionFactory));
+            services.AddScoped<IThicknessRepository>(use => new ThicknessRepository(connectionFactory));
+            services.AddScoped<IMaterialRepository>(use => new MaterialRepository(connectionFactory));
 
             services.AddScoped<ISockProvider, SockProvider>();
+            services.AddScoped<ISizeProvider, SizeProvider>();
+            services.AddScoped<IThicknessProvider, ThicknessProvider>();
+            services.AddScoped<IMaterialProvider, MaterialProvider>();
 
             services.AddScoped<SockController, SockController>();
 

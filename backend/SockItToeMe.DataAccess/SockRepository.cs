@@ -11,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace SockItToeMe.DataAccess
 {
-    public interface ISockRepository
+    public interface ISockRepository : IRepository<SockEntity>
     {
-        Task<SockEntity> GetSockByIdAsync(int id);
     }
 
     public class SockRepository : BaseRepository, ISockRepository
@@ -22,7 +21,7 @@ namespace SockItToeMe.DataAccess
         {
         }
 
-        public async Task<SockEntity> GetSockByIdAsync(int id)
+        public async Task<SockEntity> GetByIdAsync(int id)
         {
             string sql = "SELECT * FROM Sock WHERE Id = @id";
 

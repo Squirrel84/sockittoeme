@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 
-namespace Hub.Database
+namespace SockItToeMe.Database
 {
     class Program
     {
@@ -18,6 +18,7 @@ namespace Hub.Database
             var builder = new ConfigurationBuilder()
                 .SetBasePath(assemblyFolder)
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.local.json", true)
                 .AddEnvironmentVariables();
             var configuration = builder.Build();
 

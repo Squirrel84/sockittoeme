@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SockItToeMe.Entities
 {
-    public class SockEntity
+    public class SockEntity : ISockEntity
     {
         public int SockId { get; set; }
 
@@ -12,10 +12,10 @@ namespace SockItToeMe.Entities
 
         public string Colour { get; set; }
 
-        public string Size { get; set; }
+        public int SizeId { get; set; }
 
-        public string Thickness { get; set; }
+        public int ThicknessId { get; set; }
 
-        public string Material { get; set; }
+        public int MaterialId { get; set; }
     }
 }
