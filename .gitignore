@@ -24,3 +24,6 @@ bld/
 
 # Visual Studio 2015 cache/options directory
 .vs/
+/SockItToeMe.Db/SockItToeMe.Db.publish.xml
+/SockItToeMe.Db/SockItToeMe.Db.jfm
+/SockItToeMe.Db/SockItToeMe.Db.dbmdl
