@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SockItToeMe.Entities
+﻿namespace SockItToeMe.Entities.Interfaces
 {
     public interface IValueEntity
     {

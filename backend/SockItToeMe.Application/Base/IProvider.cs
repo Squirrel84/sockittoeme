@@ -1,8 +1,4 @@
-﻿using SockItToeMe.Models;
-using SockItToeMe.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SockItToeMe.Models.Interfaces;
 using System.Threading.Tasks;
 
 namespace SockItToeMe.Application.Base

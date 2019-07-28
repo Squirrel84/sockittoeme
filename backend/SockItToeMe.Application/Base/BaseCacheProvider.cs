@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using System;
+using Microsoft.Extensions.Caching.Memory;
 using SockItToeMe.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SockItToeMe.Application.Base
 {

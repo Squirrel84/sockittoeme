@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SockItToeMe.Application;
 using SockItToeMe.Application.Base;
-using SockItToeMe.Models;
 
-namespace SockItToeMe.API.Controllers
+namespace SockItToeMe.API.Controllers.Base
 {
     public abstract class ControllerBase<T> : ControllerBase where T : IProvider
     {
